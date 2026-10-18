@@ -9,6 +9,7 @@ import DestinationDetails from "./components/DestinationDetails";
 import LoadingState from "./components/LoadingState";
 import ErrorState from "./components/ErrorState";
 import TravelAssistant from "./components/TravelAssistant";
+import TravelTools from "./components/TravelTools";
 
 import { fetchDestinations } from "./services/destinationApi";
 
@@ -24,19 +25,21 @@ function App() {
   const [error, setError] = useState("");
   const [retryCount, setRetryCount] = useState(0);
 
-  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [selectedDestination, setSelectedDestination] =
+    useState(null);
 
   const [itinerary, setItinerary] = useState(() => {
     try {
       const saved = localStorage.getItem("tripwise-itinerary");
       const parsed = saved ? JSON.parse(saved) : [];
+
       return Array.isArray(parsed) ? parsed : [];
     } catch {
       return [];
     }
   });
 
-  // Fetch destination information from Wikipedia.
+  // Load destinations from Wikipedia.
   useEffect(() => {
     const controller = new AbortController();
 
@@ -57,6 +60,7 @@ function App() {
             err.message ||
               "We couldn't load destinations. Please try again."
           );
+
           setDestinations([]);
         }
       } finally {
@@ -72,7 +76,7 @@ function App() {
     };
   }, [search, retryCount]);
 
-  // Persist saved destinations between page refreshes.
+  // Save the itinerary in the browser.
   useEffect(() => {
     try {
       localStorage.setItem(
@@ -80,11 +84,13 @@ function App() {
         JSON.stringify(itinerary)
       );
     } catch {
-      console.error("Unable to save the itinerary in this browser.");
+      console.error(
+        "Unable to save the itinerary in this browser."
+      );
     }
   }, [itinerary]);
 
-  // Filter and sort the results.
+  // Filter and sort destinations.
   const filteredDestinations = useMemo(() => {
     const results = destinations.filter((destination) => {
       return (
@@ -113,7 +119,7 @@ function App() {
     });
   }, [destinations, category, sortBy]);
 
-  // Add a destination without creating duplicates.
+  // Add a destination without duplicates.
   function addToTrip(destination) {
     setItinerary((current) => {
       const alreadySaved = current.some(
@@ -140,6 +146,7 @@ function App() {
     return itinerary.some((item) => item.id === id);
   }
 
+  // Reset destination search and filters.
   function clearFilters() {
     setSearch("");
     setCategory("All");
@@ -151,7 +158,7 @@ function App() {
       <Navbar />
 
       <main>
-        {/* Homepage and search */}
+        {/* Homepage and destination search */}
         <section className="hero">
           <div className="hero-label">
             <span className="hero-dot"></span>
@@ -179,7 +186,7 @@ function App() {
           </p>
         </section>
 
-        {/* AI Travel Assistant powered by Gemini */}
+        {/* Existing Gemini AI travel assistant */}
         <TravelAssistant />
 
         {/* Destination explorer */}
@@ -215,7 +222,9 @@ function App() {
           {!loading && error && (
             <ErrorState
               message={error}
-              onRetry={() => setRetryCount((count) => count + 1)}
+              onRetry={() =>
+                setRetryCount((count) => count + 1)
+              }
             />
           )}
 
@@ -258,9 +267,10 @@ function App() {
             )}
         </section>
 
-        {/* Saved itinerary */}
+        {/* Saved destinations */}
         <section id="my-trip" className="trip-placeholder">
           <p className="eyebrow">YOUR PERSONAL COLLECTION</p>
+
           <h2>My Trip</h2>
 
           <p>
@@ -313,7 +323,9 @@ function App() {
                   <button
                     className="remove-trip-button"
                     type="button"
-                    onClick={() => removeFromTrip(destination.id)}
+                    onClick={() =>
+                      removeFromTrip(destination.id)
+                    }
                     aria-label={`Remove ${destination.title} from My Trip`}
                   >
                     Remove
@@ -330,6 +342,14 @@ function App() {
             </p>
           )}
         </section>
+
+        {/* Six travel planning tools */}
+        <TravelTools
+          destinations={destinations}
+          itinerary={itinerary}
+          onAddToTrip={addToTrip}
+          onRemoveFromTrip={removeFromTrip}
+        />
       </main>
 
       {/* Footer */}
