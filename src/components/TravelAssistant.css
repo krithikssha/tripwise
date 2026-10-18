@@ -1,0 +1,235 @@
+
+.ai-travel-section {
+  padding: 56px 7%;
+  background: #f1f3e8;
+  color: #29372a;
+}
+
+.ai-travel-heading {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.ai-travel-label {
+  color: #536449;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.ai-travel-heading h2 {
+  margin: 14px 0;
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -1px;
+}
+
+.ai-travel-heading p {
+  color: #6f7569;
+  line-height: 1.7;
+}
+
+.ai-travel-form {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #e8e9df;
+  border-radius: 22px;
+}
+
+.ai-travel-form label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ai-travel-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #dedfd5;
+  border-radius: 13px;
+  background: #fffdf9;
+  color: #29372a;
+  font: inherit;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.ai-travel-form textarea:focus {
+  outline: 2px solid #b6d966;
+  outline-offset: 2px;
+}
+
+.ai-travel-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.ai-travel-form-footer span {
+  color: #77776e;
+  font-size: 12px;
+}
+
+.ai-travel-form-footer button {
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: #dfff83;
+  color: #29372a;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ai-travel-form-footer button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.ai-travel-status,
+.ai-travel-error {
+  max-width: 760px;
+  margin: 20px auto;
+  line-height: 1.6;
+}
+
+.ai-travel-error {
+  color: #a33024;
+}
+
+.ai-travel-result {
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding: 24px;
+  border: 1px solid #e8e9df;
+  border-radius: 22px;
+  background: #fff;
+}
+
+.ai-travel-result h3 {
+  margin-top: 0;
+}
+
+.ai-travel-answer {
+  color: #4f594c;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.ai-travel-disclaimer {
+  margin-bottom: 0;
+  color: #77776e;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .ai-travel-section {
+    padding: 40px 5%;
+  }
+
+  .ai-travel-form,
+  .ai-travel-result {
+    padding: 18px;
+  }
+
+  .ai-travel-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ai-travel-form-footer button {
+    width: 100%;
+  }
+}
+
+/* AI recommendation formatting */
+
+.ai-travel-answer {
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.ai-travel-answer h2,
+.ai-travel-answer h3,
+.ai-travel-answer h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.65rem;
+  line-height: 1.4;
+}
+
+.ai-travel-answer h2:first-child,
+.ai-travel-answer h3:first-child {
+  margin-top: 0;
+}
+
+.ai-travel-answer p {
+  margin: 0.65rem 0 1rem;
+}
+
+.ai-travel-answer ul,
+.ai-travel-answer ol {
+  padding-left: 1.5rem;
+  margin: 0.6rem 0 1rem;
+}
+
+.ai-travel-answer li {
+  margin-bottom: 0.45rem;
+}
+
+.ai-travel-answer strong {
+  font-weight: 700;
+}
+
+.ai-travel-answer a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ai-travel-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.ai-travel-result-header h3 {
+  margin-bottom: 0;
+}
+
+.ai-travel-copy-button {
+  cursor: pointer;
+  padding: 0.65rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.ai-travel-copy-button:hover {
+  opacity: 0.75;
+}
+
+.ai-travel-copy-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .ai-travel-result-header {
+    align-items: flex-start;
+  }
+
+  .ai-travel-copy-button {
+    width: 100%;
+  }
+}

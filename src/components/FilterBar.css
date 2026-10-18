@@ -1,0 +1,67 @@
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.filter-chip {
+  padding: 10px 15px;
+  border: 1px solid #e9e7df;
+  border-radius: 999px;
+  background: #fffdf9;
+  color: #66685e;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chip:hover {
+  border-color: #a4b58c;
+  color: #30452b;
+}
+
+.filter-chip.selected {
+  border-color: #293e2b;
+  background: #293e2b;
+  color: white;
+}
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #77766f;
+  font-size: 13px;
+}
+
+.sort-control select {
+  padding: 10px 12px;
+  border: 1px solid #e9e7df;
+  border-radius: 10px;
+  background: white;
+  color: #293129;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .filter-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sort-control {
+    align-self: flex-end;
+  }
+}
