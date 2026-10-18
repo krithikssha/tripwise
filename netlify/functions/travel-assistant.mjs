@@ -47,7 +47,7 @@ export default async function handler(request) {
 
     // Generate travel recommendations.
     const result = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.8-flash",
 
       contents: `
 You are TripWise's friendly, thoughtful AI travel planner.
@@ -110,7 +110,7 @@ Return the complete answer in Markdown.
 
       config: {
         maxOutputTokens: 3000,
-        temperature: 0.5,
+        
       },
     });
 
